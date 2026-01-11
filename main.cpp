@@ -44,7 +44,16 @@ int main() {
     std::cout << "Enter animal information: \n";
 
     while (getline(std::cin, buffer) && buffer != "End") {
+        // free up memory from previous iterations
+        delete animal;
+        delete food;
+        animal = nullptr;
+        food = nullptr;
+
+        // put values into vector
         std::vector<std::string> vec = split(buffer, ' ');
+
+        // read the vec calues into separate variables
         if (read_line == 1) {
             animalType = vec[0];
             animalName = vec[1];
@@ -56,6 +65,7 @@ int main() {
                 breed = "";
             };
 
+            // clear vector for next input
             vec.clear();
             read_line++;
             std::cout << "\nEnter veg info: \n";
@@ -66,6 +76,7 @@ int main() {
             foodQuantity = std::stoi(vec[1]);
 
             vec.clear();
+
             if (animalType == "Zebra") {
                 if (foodType == "Vegetable") {
                     food = new Vegetable{foodQuantity};
@@ -108,9 +119,6 @@ int main() {
             std::cout << "\nEnter animal information: \n";
         }
     }
-
-    delete animal;
-    delete food;
 
     return 0;
 }
