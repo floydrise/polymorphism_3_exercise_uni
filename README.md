@@ -1,1 +1,3 @@
-# polymorphism_3_exercise_uni
+# Polymorphism exercise
+
+Relatively simple exercise from uni
